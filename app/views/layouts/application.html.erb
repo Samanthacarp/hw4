@@ -25,7 +25,7 @@
       <% if @user == nil %>
         <a href="/users/new">Sign Up</a> | <a href="/login">Login</a>
       <% else %>
-        <%= @user["real_name"] %> | <a href="/logout">Logout</a>
+        <%= @user["username"] %> | <a href="/logout">Logout</a>
       <% end %>
     </span>
   </div>
@@ -35,13 +35,15 @@
       <% @user = User.find_by({ "id" => session["user_id"] }) %>
       <% if @user == nil %>
       <% else %>
-        <%= @user["real_name"] %> | <a href="/logout">Logout</a>
       <% end %>
     </p>
 
     <p>
-      <%= flash["notice"] %>
-    </p>
+    <% if flash["notice"] %>
+  <div class="alert alert-primary mt-3">
+    <%= flash["notice"] %>
+  </div>
+<% end %>
 
     <%= yield %>
     <div>
