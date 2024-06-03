@@ -9,11 +9,11 @@
 
 <div class="row">
 <% for entry in @entries %>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4 p-3">
         <h3><%= entry["title"] %></h3>
     <h4><%= entry["occurred_on"] %></h4>
     <h4><%= entry["place_id"] %></h4>
-    <p><%= entry["description"] %></p>
+    <p class="card-text"><%= entry["description"] %></p>
     <% if entry.uploaded_image.attached? %>
     <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid">
   <% else %>
@@ -30,12 +30,12 @@
 <a class="btn btn-primary" href="/places" role="button">Back to All Places</a>
 </p>
 
-  
   <form action="/places/<%= @place["id"] %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn btn-secondary">Delete Place</button>
   </form>
   </p>
+  
 
   <% User.find_by({ "id" => session["user_id"] }) != nil %>
   <p><a class="btn btn-primary" href="/places/<%= @place["id"] %>/edit">Edit Place</a></p>
