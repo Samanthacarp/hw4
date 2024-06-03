@@ -10,10 +10,12 @@
     </p>
 
     <button class="btn btn-secondary">Save</button>
-    <a href="/places/<%= @place["id"] %>">Cancel</a>
+<a href="/places/<%=@place["id"]%>" role="button"class="btn btn-outline-dark">Cancel</a>
+
   </form>
 <% else %>
   <p>
     You must be <a href="/login">logged in</a>.
   </p>
 <% end %>
+

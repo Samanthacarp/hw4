@@ -27,19 +27,19 @@
 </div>
 
 
-
-
-
  <div class="container">
 
+
 <p>
-  <a href="/places">Back to All Places</a>
+<a class="btn btn-primary" href="/places" role="button">Back to All Places</a>
 </p>
 
-<% User.find_by({ "id" => session["user_id"] }) != nil %>
-  <p><a href="/places/<%= @place["id"] %>/edit">Edit Place</a></p>
-
+  
   <form action="/places/<%= @place["id"] %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn btn-secondary">Delete Place</button>
   </form>
+  </p>
+
+  <% User.find_by({ "id" => session["user_id"] }) != nil %>
+  <p><a class="btn btn-primary" href="/places/<%= @place["id"] %>/edit">Edit Place</a></p>
